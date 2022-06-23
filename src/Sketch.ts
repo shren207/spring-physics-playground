@@ -1,8 +1,8 @@
 import "./style.css";
 import Bob from "./Bob";
+import Spring from "./Spring";
 
 const app = document.querySelector<HTMLDivElement>("#app")!;
-let bob: Bob = new Bob(100, 100);
 
 app.innerHTML = `
   <h1>Spring Physics</h1>
@@ -16,6 +16,9 @@ export default class App {
   startTime: number;
   // frameRequestHandle: number;
 
+  spring: Spring;
+  bob: Bob;
+
   constructor() {
     this.canvas = document.querySelector("canvas") as HTMLCanvasElement;
     this.canvas.width = 640;
@@ -26,7 +29,9 @@ export default class App {
     this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
     this.startTime = Date.now();
     // this.frameRequestHandle = window.requestAnimationFrame(this.frameRequest);
-    bob.display(this.context);
+    this.spring = new Spring(this.canvas.width / 2, 10, 100);
+    this.bob = new Bob(this.canvas.width / 2, 100);
+    // this.bob.display(this.context);
   }
 }
 
