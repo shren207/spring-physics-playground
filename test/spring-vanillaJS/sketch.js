@@ -39,7 +39,8 @@ function init() {
     false
   );
   // make the ball move
-  t0 = new Date().getTime();
+  t0 = new Date().getTime(); // 16683869390 이런 식으로 나옴
+  // new Date().getTime() === Date.now()
   animFrame();
 }
 

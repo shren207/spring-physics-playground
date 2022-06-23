@@ -21,6 +21,7 @@ class Bob {
 
   // Newton's law: F = M * A
   applyForce(force) {
+    // force is a p5.Vector
     let f = force.copy();
     f.div(this.mass);
     this.acceleration.add(f);
@@ -38,7 +39,12 @@ class Bob {
   }
 
   handleClick(mx, my) {
-    let d = dist(mx, my, this.position.x, this.position.y);
+    // let d = dist(mx, my, this.position.x, this.position.y);
+    // let d = Math.sqrt(mx * my + this.position.x * this.posi
+    let d = Math.sqrt(
+      Math.abs(mx - this.position.x) ** 2 + Math.abs(my - this.position.y) ** 2
+    );
+    // tion.y);
     if (d < this.mass) {
       this.dragging = true;
       this.dragOffset.x = this.position.x - mx;
