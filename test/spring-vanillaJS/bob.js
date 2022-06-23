@@ -28,12 +28,10 @@ Bob.prototype = {
   },
   draw: function (context) {
     var r = this.radius; // radius of body
-    var rh = 0.5 * r; // radius of head
     context.save();
     context.fillStyle = this.color;
     context.beginPath();
     context.arc(this.x, this.y, r, 0, 2 * Math.PI, true); // body
-    // context.arc(this.x, this.y-r-rh, rh, 0, 2*Math.PI, true); // head
     context.closePath();
     context.fill();
     context.restore();
