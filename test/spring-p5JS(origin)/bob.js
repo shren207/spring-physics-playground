@@ -1,6 +1,9 @@
+// Bob object, just like our regular Mover (location, velocity, acceleration, mass)
+
 class Bob {
+
   constructor(x, y) {
-    this.position = createVector(x, y); // https://p5js.org/ko/reference/#/p5.Vector
+    this.position = createVector(x, y);
     this.velocity = createVector();
     this.acceleration = createVector();
     this.mass = 24;
@@ -21,7 +24,6 @@ class Bob {
 
   // Newton's law: F = M * A
   applyForce(force) {
-    // force is a p5.Vector
     let f = force.copy();
     f.div(this.mass);
     this.acceleration.add(f);
@@ -39,9 +41,7 @@ class Bob {
   }
 
   handleClick(mx, my) {
-    let d = Math.sqrt(
-      Math.abs(mx - this.position.x) ** 2 + Math.abs(my - this.position.y) ** 2
-    );
+    let d = dist(mx, my, this.position.x, this.position.y);
     if (d < this.mass) {
       this.dragging = true;
       this.dragOffset.x = this.position.x - mx;

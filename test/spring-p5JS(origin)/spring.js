@@ -1,4 +1,12 @@
+// Nature of Code
+// Daniel Shiffman
+// Chapter 3: Oscillation
+
+// Object to describe an anchor point that can connect to "Bob" objects via a spring
+// Thank you: http://www.myphysicslab.com/spring2d.html
+
 class Spring {
+
   constructor(x, y, length) {
     this.anchor = createVector(x, y);
     this.restLength = length;
@@ -23,7 +31,6 @@ class Spring {
   // Constrain the distance between bob and anchor between min and max
   constrainLength(b, minLength, maxLength) {
     let dir = p5.Vector.sub(b.position, this.anchor);
-    // sub(v1, v2)
     let d = dir.mag();
     // Is it too short?
     if (d < minLength) {
@@ -31,7 +38,6 @@ class Spring {
       dir.mult(minLength);
       // Reset location and stop from moving (not realistic physics)
       b.position = p5.Vector.add(this.anchor, dir);
-      // add(v1, v2)
       b.velocity.mult(0);
       // Is it too long?
     } else if (d > maxLength) {
@@ -39,21 +45,41 @@ class Spring {
       dir.mult(maxLength);
       // Reset location and stop from moving (not realistic physics)
       b.position = p5.Vector.add(this.anchor, dir);
-      // add(v1, v2)
       b.velocity.mult(0);
     }
   }
 
+  // Constrain the distance between bob and anchor between min and max
+  constrainLength(bob, minlen, maxlen) {
+    let dir = p5.Vector.sub(bob.position, this.anchor);
+    let d = dir.mag();
+    // Is it too short?
+    if (d < minlen) {
+      dir.normalize();
+      dir.mult(minlen);
+      // Reset position and stop from moving (not realistic physics)
+      bob.position = p5.Vector.add(anchor, dir);
+      bob.velocity.mult(0);
+      // Is it too long?
+    } else if (d > maxlen) {
+      dir.normalize();
+      dir.mult(maxlen);
+      // Reset position and stop from moving (not realistic physics)
+      bob.position = p5.Vector.add(this.anchor, dir);
+      bob.velocity.mult(0);
+    }
+  }
+
   display() {
-    stroke(255); // https://p5js.org/ko/reference/#/p5/stroke
-    fill(127); // https://p5js.org/ko/reference/#/p5/fill
-    strokeWeight(2); // https://p5js.org/ko/reference/#/p5/strokeWeight
-    ellipse(this.anchor.x, this.anchor.y, 10); // https://p5js.org/ko/reference/#/p5/ellipse
+    stroke(255);
+    fill(127);
+    strokeWeight(2);
+    ellipse(this.anchor.x, this.anchor.y, 10);
   }
 
   displayLine(b) {
     strokeWeight(2);
     stroke(255);
-    line(b.position.x, b.position.y, this.anchor.x, this.anchor.y); // https://p5js.org/ko/reference/#/p5/line
+    line(b.position.x, b.position.y, this.anchor.x, this.anchor.y);
   }
 }
