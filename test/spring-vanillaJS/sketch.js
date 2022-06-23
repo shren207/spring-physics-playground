@@ -1,4 +1,6 @@
-﻿var canvas = document.getElementById("canvas");
+﻿// vanillaJS
+
+var canvas = document.getElementById("canvas");
 var context = canvas.getContext("2d");
 
 var bob;
@@ -19,7 +21,7 @@ window.onload = init;
 
 function init() {
   // create a bob
-  bob = new StickMan();
+  bob = new Bob();
   bob.mass = mass;
   bob.pos2D = new Vector2D(300, 200);
   bob.draw(context);

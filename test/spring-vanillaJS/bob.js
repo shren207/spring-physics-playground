@@ -1,5 +1,5 @@
 ﻿// dependencies: Vector2D
-function StickMan(radius, color, mass) {
+function Bob(radius, color, mass) {
   if (typeof radius === "undefined") radius = 20;
   if (typeof color === "undefined") color = "#0000ff";
   if (typeof mass === "undefined") mass = 1;
@@ -11,7 +11,7 @@ function StickMan(radius, color, mass) {
   this.vx = 0;
   this.vy = 0;
 }
-StickMan.prototype = {
+Bob.prototype = {
   get pos2D() {
     return new Vector2D(this.x, this.y);
   },

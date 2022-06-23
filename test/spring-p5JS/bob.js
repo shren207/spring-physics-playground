@@ -1,5 +1,3 @@
-// Bob object, just like our regular Mover (location, velocity, acceleration, mass)
-
 class Bob {
   constructor(x, y) {
     this.position = createVector(x, y); // https://p5js.org/ko/reference/#/p5.Vector

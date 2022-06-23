@@ -1,10 +1,3 @@
-// Nature of Code
-// Daniel Shiffman
-// Chapter 3: Oscillation
-
-// Object to describe an anchor point that can connect to "Bob" objects via a spring
-// Thank you: http://www.myphysicslab.com/spring2d.html
-
 class Spring {
   constructor(x, y, length) {
     this.anchor = createVector(x, y);
