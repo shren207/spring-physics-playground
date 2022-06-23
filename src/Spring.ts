@@ -1,10 +1,6 @@
 import Bob from "./Bob";
 import createVector from "./CreateVector";
 
-// type ConstrainLength = {
-//   ();
-// };
-
 export default class Spring {
   length: number;
   anchor: createVector;
@@ -40,7 +36,9 @@ export default class Spring {
       dir.normalize();
       dir.mult(minLength);
       // Reset location and stop from moving (not realistic physics)
-      b.position = p5.Vector.add(this.anchor, dir);
+      const newPosition = this.anchor.copy();
+      newPosition.add(dir);
+      b.position = newPosition;
       // add(v1, v2)
       b.velocity.mult(0);
       // Is it too long?
@@ -48,7 +46,9 @@ export default class Spring {
       dir.normalize();
       dir.mult(maxLength);
       // Reset location and stop from moving (not realistic physics)
-      b.position = p5.Vector.add(this.anchor, dir);
+      const newPosition = this.anchor.copy();
+      newPosition.add(dir);
+      b.position = newPosition;
       // add(v1, v2)
       b.velocity.mult(0);
     }
