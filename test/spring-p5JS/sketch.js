@@ -1,5 +1,3 @@
-// p5JS
-
 // Mover object
 let bob;
 
@@ -33,7 +31,7 @@ function draw() {
   // Draw everything
   spring.displayLine(bob); // Draw a line between spring and bob
   bob.display();
-  spring.display();
+  spring.displayAnchor();
 }
 
 function mousePressed() {
