@@ -46,9 +46,10 @@ class Spring {
 
   displayAnchor() {
     // 여기가 anchor
-    // "#222555"
     stroke(255); // https://p5js.org/ko/reference/#/p5/stroke
     fill(127); // https://p5js.org/ko/reference/#/p5/fill
+    // 255 === '#ffffff' (white)
+    // 127 === '#7f7f7f' (gray)
     strokeWeight(2); // https://p5js.org/ko/reference/#/p5/strokeWeight
     ellipse(this.anchor.x, this.anchor.y, 10); // https://p5js.org/ko/reference/#/p5/ellipse
   }
@@ -56,8 +57,8 @@ class Spring {
   displayLine(b) {
     // 여기가 spring
     // b: Bob;
-    strokeWeight(2);
-    stroke(255);
+    strokeWeight(2); // === context.lineWidth = 2;
+    stroke(255); // === context.strokeStyle = '#ffffff';
     line(b.position.x, b.position.y, this.anchor.x, this.anchor.y); // https://p5js.org/ko/reference/#/p5/line
   }
 }
