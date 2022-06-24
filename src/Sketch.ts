@@ -61,21 +61,14 @@ export default class App {
     this.spring.displayLine(this.bob, this.context);
     this.bob.display(this.context);
     this.spring.displayAnchor(this.context);
-    // 여기 이후부터 update, render를 하는 코드를 작성해야 하는듯.
 
     // 이런 식으로 작성하면 안됨
     // this.spring.render(this.context);
     // this.bob.render(this.context);
     // this.spring.connect(this.bob);
 
-    // [velog-canvas-mouse-interaction] : 예시 코드
-    //  for (let i = 0; i < this.shapes.length; i++) {
-    //       this.shapes[i].update(this.delta);
-    //       this.shapes[i].render(this.context);
-    //     }
-
     // 1. update를 하고,
-    // 2. render를 한다.
+    // 2. render(display)를 한다.
   };
 }
 
