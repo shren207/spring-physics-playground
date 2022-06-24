@@ -44,7 +44,7 @@ export default class Bob {
     context.fill();
     context.stroke();
     if (this.dragging) {
-      context.strokeStyle = "#c8c8c8";
+      context.fillStyle = "#c8c8c8";
       context.fill();
     }
   }
@@ -58,10 +58,17 @@ export default class Bob {
       this.dragOffset.x = this.position.x - mx;
       this.dragOffset.y = this.position.y - my;
     }
+    console.log(`mx : ${mx}`);
+    console.log(`my : ${my}`);
+    console.log(`Bob x : ${this.position.x}`);
+    console.log(`Bob y : ${this.position.y}`);
+    console.log(this.dragging);
   }
 
   stopDragging() {
     this.dragging = false;
+    console.log("I'm not dragging anymore");
+    console.log(this.dragging);
   }
 
   handleDrag(mx: number, my: number) {

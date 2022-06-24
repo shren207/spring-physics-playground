@@ -47,6 +47,10 @@ class Bob {
       this.dragOffset.x = this.position.x - mx;
       this.dragOffset.y = this.position.y - my;
     }
+    console.log(`mx : ${mx}`);
+    console.log(`my : ${my}`);
+    console.log(`X : ${this.position.x}`);
+    console.log(`Y : ${this.position.y}`);
   }
 
   stopDragging() {

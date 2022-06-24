@@ -21,12 +21,15 @@ export default class App {
   bob: Bob;
 
   constructor() {
-    App.instance = this;
+    App.instance = this; // Singleton Pattern
 
     this.canvas = document.createElement("canvas");
     this.canvas.width = 640;
     this.canvas.height = 360;
-    this.canvas.addEventListener("click", this.handleClick);
+    this.canvas.addEventListener("mousedown", this.mousePressed);
+    this.canvas.addEventListener("mousemove", this.mouseDragged);
+    this.canvas.addEventListener("mouseup", this.mouseReleased);
+    // this.canvas.addEventListener("drag", this.mouseDragged);
 
     this.context = this.canvas.getContext("2d")!;
     this.startTime = Date.now();
@@ -36,14 +39,28 @@ export default class App {
     app.appendChild(this.canvas);
   }
 
-  handleClick = (event: MouseEvent) => {
+  mousePressed = (event: MouseEvent) => {
     // event type : https://www.w3schools.com/jsref/dom_obj_event.asp (여기서 확인가능)
-    console.log(`X : ${event.clientX}`);
-    console.log(`Y : ${event.clientY}`);
+    const shiftX = event.clientX - this.canvas.getBoundingClientRect().left;
+    const shiftY = event.clientY - this.canvas.getBoundingClientRect().top;
+    this.bob.handleClick(shiftX, shiftY);
+  };
+
+  mouseDragged = (event: MouseEvent) => {
+    if (!this.bob.dragging) {
+      return;
+    }
+    const shiftX = event.clientX - this.canvas.getBoundingClientRect().left;
+    const shiftY = event.clientY - this.canvas.getBoundingClientRect().top;
+    this.bob.handleDrag(shiftX, shiftY);
+  };
+
+  mouseReleased = () => {
+    this.bob.stopDragging();
   };
 
   frameRequest = () => {
-    // draw 역할을 하는 함수.
+    // p5.js에서 draw 역할을 하는 함수.
     this.frameRequestHandle = window.requestAnimationFrame(this.frameRequest);
     const currentTime = Date.now();
     this.delta = (currentTime - this.startTime) * 0.001;
@@ -66,14 +83,6 @@ export default class App {
     this.spring.displayLine(this.bob, this.context);
     this.bob.display(this.context);
     this.spring.displayAnchor(this.context);
-
-    // 이런 식으로 작성하면 안됨
-    // this.spring.render(this.context);
-    // this.bob.render(this.context);
-    // this.spring.connect(this.bob);
-
-    // 1. update를 하고,
-    // 2. render(display)를 한다.
   };
 }
 
