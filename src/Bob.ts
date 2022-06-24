@@ -34,7 +34,7 @@ export default class Bob {
     this.acceleration.add(f);
   }
 
-  render(context: CanvasRenderingContext2D) {
+  display(context: CanvasRenderingContext2D) {
     // draw(render) the bob
     context.beginPath();
     context.arc(this.position.x, this.position.y, this.mass, 0, 2 * Math.PI);

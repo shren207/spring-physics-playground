@@ -14,6 +14,9 @@ function setup() {
 }
 
 function draw() {
+  // 원래 무언가를 display하려면 HTML5에서는 context를 argument로 보내줘야 하는데,
+  // p5.js에서는 아무것도 보내줄 필요없이 그냥 함수를 호출하기만 하면 된다.
+
   // draw가 일종의 frameRequest 역할을 하는 듯.
   background(51); // https://p5js.org/ko/reference/#/p5/background (색깔 정하는 옵션)
 
@@ -31,7 +34,7 @@ function draw() {
 
   // Draw everything
   spring.displayLine(bob); // Draw a line between spring and bob
-  bob.display();
+  bob.display(); // p5.js는 render
   spring.displayAnchor();
 }
 

@@ -46,6 +46,7 @@ class Spring {
 
   displayAnchor() {
     // 여기가 anchor
+    // "#222555"
     stroke(255); // https://p5js.org/ko/reference/#/p5/stroke
     fill(127); // https://p5js.org/ko/reference/#/p5/fill
     strokeWeight(2); // https://p5js.org/ko/reference/#/p5/strokeWeight
@@ -54,6 +55,7 @@ class Spring {
 
   displayLine(b) {
     // 여기가 spring
+    // b: Bob;
     strokeWeight(2);
     stroke(255);
     line(b.position.x, b.position.y, this.anchor.x, this.anchor.y); // https://p5js.org/ko/reference/#/p5/line

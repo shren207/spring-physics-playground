@@ -1,6 +1,7 @@
 import "./style.css";
 import Bob from "./Bob";
 import Spring from "./Spring";
+import CreateVector from "./CreateVector";
 
 const app = document.querySelector<HTMLDivElement>("#app")!;
 
@@ -44,6 +45,18 @@ export default class App {
     this.startTime = currentTime;
 
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+    const gravity = new CreateVector(0, 2);
+    this.bob.applyForce(gravity);
+
+    this.spring.connect(this.bob);
+    this.spring.constrainLength(this.bob, 30, 200);
+
+    this.bob.update();
+
+    this.spring.displayLine(this.bob, this.context);
+    this.bob.display(this.context);
+    this.spring.displayAnchor(this.context);
     // 여기 이후부터 update, render를 하는 코드를 작성해야 하는듯.
 
     // 이런 식으로 작성하면 안됨
@@ -56,6 +69,7 @@ export default class App {
     //       this.shapes[i].update(this.delta);
     //       this.shapes[i].render(this.context);
     //     }
+
     // 1. update를 하고,
     // 2. render를 한다.
   };

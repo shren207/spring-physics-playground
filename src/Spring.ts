@@ -52,20 +52,20 @@ export default class Spring {
       b.velocity.mult(0);
     }
   }
-  render(context: CanvasRenderingContext2D) {
-    // 1. render anchor
+  displayAnchor(context: CanvasRenderingContext2D) {
     context.beginPath();
-    context.arc(this.anchor.x, this.anchor.y, 5, 0, Math.PI * 2);
+    context.arc(this.anchor.x, this.anchor.y, 5, 0, 2 * Math.PI);
     context.strokeStyle = "#FFFFFF";
     context.fillStyle = "#7F7F7F";
     context.lineWidth = 2;
     context.fill();
     context.stroke();
+  }
 
-    // 2. render spring
+  displayLine(bob: Bob, context: CanvasRenderingContext2D) {
     context.beginPath();
     context.moveTo(this.anchor.x, this.anchor.y);
-    context.lineTo(this.anchor.x + this.length, this.anchor.y);
+    context.lineTo(bob.position.x, bob.position.y);
     context.strokeStyle = "#FFFFFF";
     context.lineWidth = 2;
     context.stroke();
