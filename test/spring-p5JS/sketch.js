@@ -14,6 +14,7 @@ function setup() {
 }
 
 function draw() {
+  // draw가 일종의 frameRequest 역할을 하는 듯.
   background(51); // https://p5js.org/ko/reference/#/p5/background (색깔 정하는 옵션)
 
   // Apply a gravity force to the bob

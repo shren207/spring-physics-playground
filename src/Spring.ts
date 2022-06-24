@@ -15,14 +15,13 @@ export default class Spring {
 
   connect(bob: Bob) {
     const force = bob.position.copy();
-    force.add(this.anchor);
+    force.sub(this.anchor);
 
     let d = force.mag();
     let stretch = d - this.restLength;
 
     force.normalize();
     force.mult(-1 * this.k * stretch);
-
     bob.applyForce(force);
   }
 

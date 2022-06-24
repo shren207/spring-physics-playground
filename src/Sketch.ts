@@ -9,6 +9,8 @@ app.innerHTML = `
 `;
 
 export default class App {
+  static instance: App;
+
   canvas: HTMLCanvasElement;
   context: CanvasRenderingContext2D;
   delta: number = 0;
@@ -18,6 +20,8 @@ export default class App {
   bob: Bob;
 
   constructor() {
+    App.instance = this;
+
     this.canvas = document.createElement("canvas");
     this.canvas.width = 640;
     this.canvas.height = 360;
@@ -33,15 +37,27 @@ export default class App {
   }
 
   frameRequest = () => {
+    // draw 역할을 하는 함수.
     this.frameRequestHandle = window.requestAnimationFrame(this.frameRequest);
     const currentTime = Date.now();
-    this.delta = (currentTime - this.startTime) / 1000;
+    this.delta = (currentTime - this.startTime) * 0.001;
     this.startTime = currentTime;
 
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    // 여기 이후부터 update, render를 하는 코드를 작성해야 하는듯.
 
-    this.spring.render(this.context);
-    this.bob.render(this.context);
+    // 이런 식으로 작성하면 안됨
+    // this.spring.render(this.context);
+    // this.bob.render(this.context);
+    // this.spring.connect(this.bob);
+
+    // [velog-canvas-mouse-interaction] : 예시 코드
+    //  for (let i = 0; i < this.shapes.length; i++) {
+    //       this.shapes[i].update(this.delta);
+    //       this.shapes[i].render(this.context);
+    //     }
+    // 1. update를 하고,
+    // 2. render를 한다.
   };
 }
 
