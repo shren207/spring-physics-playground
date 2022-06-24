@@ -7552,7 +7552,7 @@
             var h = (f.prototype = c.prototype);
             h.constructor = f;
             var p = h.toString,
-              y = "Symbol(test)" == String(c("test")),
+              y = "Symbol(reference)" == String(c("test")),
               m = /^Symbol\((.*)\)[^)]+$/;
             l(h, "description", {
               configurable: !0,
