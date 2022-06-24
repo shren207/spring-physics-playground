@@ -47,7 +47,7 @@ export default class App {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
     // fill canvas background
-    this.context.fillStyle = "black";
+    this.context.fillStyle = "#333333";
     this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
     const gravity = new CreateVector(0, 2);
