@@ -26,16 +26,21 @@ export default class App {
     this.canvas = document.createElement("canvas");
     this.canvas.width = 640;
     this.canvas.height = 360;
-    this.delta = 0;
+    this.canvas.addEventListener("click", this.handleClick);
+
     this.context = this.canvas.getContext("2d")!;
-    // this.context.fillStyle = "black";
-    // this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
     this.startTime = Date.now();
     this.frameRequestHandle = window.requestAnimationFrame(this.frameRequest);
     this.spring = new Spring(this.canvas.width / 2, 10, 100);
     this.bob = new Bob(this.canvas.width / 2, 100);
     app.appendChild(this.canvas);
   }
+
+  handleClick = (event: MouseEvent) => {
+    // event type : https://www.w3schools.com/jsref/dom_obj_event.asp (여기서 확인가능)
+    console.log(`X : ${event.clientX}`);
+    console.log(`Y : ${event.clientY}`);
+  };
 
   frameRequest = () => {
     // draw 역할을 하는 함수.
